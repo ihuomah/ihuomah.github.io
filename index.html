@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Kyma Uwa — Cybersecurity Professional. MSc Applied Cybersecurity, Heriot-Watt University. Security Operations, OT Security, Digital Forensics.">
 <title>Kyma Uwa — Cybersecurity Professional</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --navy: #0D1B2A;
@@ -18,153 +20,873 @@
   --off-white: #EDE9E3;
   --text: #1A1A1A;
   --text-muted: #6B6560;
-  --border: rgba(200,169,110,0.2);
   --border-subtle: rgba(0,0,0,0.08);
   --card-bg: #FDFBF8;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);line-height:1.7;overflow-x:hidden}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.7;
+  overflow-x:hidden;
+}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 4rem;background:rgba(248,246,242,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);transition:all .3s}
-.nav-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--navy);text-decoration:none}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:.83rem;font-weight:500;color:var(--text-muted);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1.25rem 4rem;
+  background:rgba(248,246,242,0.93);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border-subtle);
+  transition:all .3s;
+}
+
+.nav-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.2rem;
+  color:var(--navy);
+  text-decoration:none;
+}
+
+.nav-links{
+  display:flex;
+  gap:2.5rem;
+  list-style:none;
+}
+
+.nav-links a{
+  font-size:.83rem;
+  font-weight:500;
+  color:var(--text-muted);
+  text-decoration:none;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:color .2s;
+}
+
 .nav-links a:hover{color:var(--navy)}
-.nav-cta{color:var(--navy)!important;border:1px solid var(--navy);padding:.4rem 1.2rem;border-radius:2px;transition:all .2s!important}
-.nav-cta:hover{background:var(--navy)!important;color:var(--white)!important}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.hamburger span{display:block;width:24px;height:1.5px;background:var(--navy)}
+
+.nav-cta{
+  color:var(--navy)!important;
+  border:1px solid var(--navy);
+  padding:.4rem 1.2rem;
+  border-radius:2px;
+}
+
+.nav-cta:hover{
+  background:var(--navy)!important;
+  color:var(--white)!important;
+}
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  padding:4px;
+}
+
+.hamburger span{
+  display:block;
+  width:24px;
+  height:1.5px;
+  background:var(--navy);
+}
 
 /* HERO */
-#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 4rem 4rem;gap:4rem;background:var(--navy);position:relative;overflow:hidden}
-#hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,169,110,.07) 0%,transparent 70%);pointer-events:none}
-#hero::after{content:'';position:absolute;bottom:10%;left:5%;width:1px;height:160px;background:linear-gradient(to bottom,transparent,var(--accent),transparent)}
-.hero-text{position:relative;z-index:2}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
-.hero-tag::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent)}
-.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,5vw,4.2rem);color:var(--white);line-height:1.1;margin-bottom:.4rem;letter-spacing:-.01em}
-.hero-name span{display:block;color:var(--accent);font-style:italic;font-size:clamp(1.3rem,2.5vw,2rem)}
-.hero-title{font-size:.9rem;font-weight:300;color:rgba(248,246,242,.55);margin-bottom:1.5rem;letter-spacing:.04em}
-.hero-tagline{font-size:1rem;color:rgba(248,246,242,.82);margin-bottom:2.5rem;max-width:480px;line-height:1.85;border-left:2px solid var(--accent);padding-left:1.2rem}
-.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:var(--navy);font-size:.85rem;font-weight:500;padding:.85rem 2rem;border-radius:2px;text-decoration:none;letter-spacing:.04em;transition:all .2s}
-.btn-primary:hover{background:var(--accent-light);transform:translateY(-1px)}
-.btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--white);font-size:.85rem;font-weight:500;padding:.85rem 2rem;border:1px solid rgba(248,246,242,.3);border-radius:2px;text-decoration:none;letter-spacing:.04em;transition:all .2s}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-.hero-image-col{position:relative;z-index:2;display:flex;justify-content:center;align-items:flex-end}
-.hero-photo-frame{position:relative;width:360px;max-width:100%}
-.hero-photo-frame::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;border:1px solid var(--accent);border-radius:2px;opacity:.35}
-.hero-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;border-radius:2px;display:block;filter:grayscale(12%) contrast(1.04)}
-.hero-social{position:absolute;bottom:-1rem;right:-2rem;display:flex;flex-direction:column;gap:1rem}
-.social-link{width:38px;height:38px;border:1px solid rgba(200,169,110,.3);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--accent);text-decoration:none;font-size:.75rem;font-family:'JetBrains Mono',monospace;transition:all .2s;font-weight:500}
-.social-link:hover{background:var(--accent);color:var(--navy);border-color:var(--accent)}
-.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(248,246,242,.35);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
-.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(200,169,110,.6),transparent);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:8rem 4rem 4rem;
+  gap:4rem;
+  background:var(--navy);
+  position:relative;
+  overflow:hidden;
+}
+
+#hero::before{
+  content:'';
+  position:absolute;
+  top:-20%;
+  right:-10%;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(200,169,110,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+#hero::after{
+  content:'';
+  position:absolute;
+  bottom:10%;
+  left:5%;
+  width:1px;
+  height:160px;
+  background:linear-gradient(to bottom,transparent,var(--accent),transparent);
+}
+
+.hero-text{
+  position:relative;
+  z-index:2;
+}
+
+.hero-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  color:var(--accent);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:1.5rem;
+}
+
+.hero-tag::before{
+  content:'';
+  display:inline-block;
+  width:20px;
+  height:1px;
+  background:var(--accent);
+}
+
+.hero-name{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2.6rem,5vw,4.2rem);
+  color:var(--white);
+  line-height:1.1;
+  margin-bottom:.4rem;
+}
+
+.hero-name span{
+  display:block;
+  color:var(--accent);
+  font-style:italic;
+  font-size:clamp(1.3rem,2.5vw,2rem);
+}
+
+.hero-title{
+  font-size:.9rem;
+  font-weight:300;
+  color:rgba(248,246,242,.55);
+  margin-bottom:1.5rem;
+  letter-spacing:.04em;
+}
+
+.hero-tagline{
+  font-size:1rem;
+  color:rgba(248,246,242,.82);
+  margin-bottom:2.5rem;
+  max-width:480px;
+  line-height:1.85;
+  border-left:2px solid var(--accent);
+  padding-left:1.2rem;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.btn-primary,
+.btn-outline{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-size:.85rem;
+  font-weight:500;
+  padding:.85rem 2rem;
+  border-radius:2px;
+  text-decoration:none;
+  letter-spacing:.04em;
+  transition:all .2s;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:var(--navy);
+}
+
+.btn-primary:hover{
+  background:var(--accent-light);
+  transform:translateY(-1px);
+}
+
+.btn-outline{
+  background:transparent;
+  color:var(--white);
+  border:1px solid rgba(248,246,242,.3);
+}
+
+.btn-outline:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.hero-image-col{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero-photo-frame{
+  position:relative;
+  width:330px;
+  max-width:100%;
+}
+
+.hero-photo-frame::before{
+  content:'';
+  position:absolute;
+  top:-12px;
+  left:-12px;
+  right:12px;
+  bottom:12px;
+  border:1px solid var(--accent);
+  border-radius:2px;
+  opacity:.35;
+}
+
+.hero-photo{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:top center;
+  border-radius:2px;
+  display:block;
+  filter:grayscale(12%) contrast(1.04);
+  position:relative;
+  z-index:1;
+}
+
+.hero-social{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:1rem;
+  margin-top:1rem;
+  opacity:.75;
+}
+
+.social-link{
+  width:38px;
+  height:38px;
+  border:1px solid rgba(200,169,110,.3);
+  border-radius:2px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent);
+  text-decoration:none;
+  font-size:.75rem;
+  font-family:'JetBrains Mono',monospace;
+  transition:all .2s;
+  font-weight:500;
+}
+
+.social-link:hover{
+  background:var(--accent);
+  color:var(--navy);
+  border-color:var(--accent);
+}
+
+.hero-scroll{
+  position:absolute;
+  bottom:2rem;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.5rem;
+  color:rgba(248,246,242,.35);
+  font-size:.68rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-family:'JetBrains Mono',monospace;
+}
+
+.scroll-line{
+  width:1px;
+  height:36px;
+  background:linear-gradient(to bottom,rgba(200,169,110,.6),transparent);
+  animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:.4}
+  50%{opacity:1}
+}
 
 /* SECTIONS */
 section{padding:6rem 4rem}
-.section-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
-.section-label::after{content:'';display:inline-block;width:36px;height:1px;background:var(--accent);opacity:.5}
-.section-title{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--navy);line-height:1.15;margin-bottom:1rem;letter-spacing:-.01em}
 
-/* INTRO VIDEO */
-#intro{background:var(--navy);display:grid;grid-template-columns:1fr 1.15fr;gap:5rem;align-items:center}
+.section-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;
+  color:var(--accent);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:.75rem;
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+
+.section-label::after{
+  content:'';
+  display:inline-block;
+  width:36px;
+  height:1px;
+  background:var(--accent);
+  opacity:.5;
+}
+
+.section-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.9rem,3.5vw,2.8rem);
+  color:var(--navy);
+  line-height:1.15;
+  margin-bottom:1rem;
+}
+
+/* INTRO */
+#intro{
+  background:var(--navy);
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:5rem;
+  align-items:center;
+}
+
 #intro .section-title{color:var(--white)}
-.intro-desc{color:rgba(248,246,242,.68);font-size:.98rem;line-height:1.9;margin-bottom:1.2rem}
-.intro-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
-.stat-item{border-left:2px solid var(--accent);padding-left:1rem}
-.stat-number{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--accent);line-height:1;margin-bottom:.2rem}
-.stat-label{font-size:.72rem;color:rgba(248,246,242,.45);letter-spacing:.06em;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
-.video-wrap{border-radius:4px;overflow:hidden;border:1px solid rgba(200,169,110,.12)}
-.video-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0D1B2A 0%,#1B3A6B 100%);gap:1rem;cursor:pointer;position:relative;overflow:hidden}
-.video-placeholder::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,169,110,.025) 40px,rgba(200,169,110,.025) 41px)}
-.play-btn{width:60px;height:60px;border:2px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:all .3s}
-.play-btn::after{content:'';width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid var(--accent);margin-left:4px}
-.video-placeholder:hover .play-btn{background:var(--accent);transform:scale(1.06)}
-.video-placeholder:hover .play-btn::after{border-left-color:var(--navy)}
-.video-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:rgba(200,169,110,.65);letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:1}
-.video-embed{aspect-ratio:16/9;width:100%}
-.video-embed iframe{width:100%;height:100%;border:none;display:block}
+
+.intro-desc{
+  color:rgba(248,246,242,.68);
+  font-size:.98rem;
+  line-height:1.9;
+  margin-bottom:1.2rem;
+}
+
+.intro-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+  margin-top:2.5rem;
+}
+
+.stat-item{
+  border-left:2px solid var(--accent);
+  padding-left:1rem;
+}
+
+.stat-number{
+  font-family:'DM Serif Display',serif;
+  font-size:1.7rem;
+  color:var(--accent);
+  line-height:1;
+  margin-bottom:.2rem;
+}
+
+.stat-label{
+  font-size:.72rem;
+  color:rgba(248,246,242,.45);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-family:'JetBrains Mono',monospace;
+}
+
+/* VIDEO */
+.video-wrap{
+  border-radius:4px;
+  overflow:hidden;
+  border:1px solid rgba(200,169,110,.12);
+}
+
+.video-placeholder{
+  aspect-ratio:16/9;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#0D1B2A 0%,#1B3A6B 100%);
+  gap:1rem;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  min-height:260px;
+}
+
+.video-placeholder::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,169,110,.025) 40px,rgba(200,169,110,.025) 41px);
+}
+
+.play-btn{
+  width:60px;
+  height:60px;
+  border:2px solid var(--accent);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+  transition:all .3s;
+}
+
+.play-btn::after{
+  content:'';
+  width:0;
+  height:0;
+  border-top:9px solid transparent;
+  border-bottom:9px solid transparent;
+  border-left:16px solid var(--accent);
+  margin-left:4px;
+}
+
+.video-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  color:rgba(200,169,110,.65);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  position:relative;
+  z-index:1;
+}
 
 /* PROJECTS */
-#projects{background:var(--off-white)}
-.projects-header{max-width:580px;margin-bottom:4rem}
-.projects-header p{color:var(--text-muted);font-size:.98rem;line-height:1.85}
-.project-card{background:var(--card-bg);border:1px solid var(--border-subtle);border-radius:4px;margin-bottom:2rem;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;transition:box-shadow .3s}
-.project-card:hover{box-shadow:0 8px 40px rgba(13,27,42,.08)}
-.project-card.reverse{direction:rtl}
-.project-card.reverse>*{direction:ltr}
-.project-info{padding:3rem;display:flex;flex-direction:column;justify-content:center}
-.project-number{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.12em;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
-.project-number::after{content:'';flex:1;height:1px;background:var(--accent);opacity:.3;max-width:36px}
-.project-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);line-height:1.2;margin-bottom:.9rem;letter-spacing:-.01em}
-.project-desc{font-size:.91rem;color:var(--text-muted);line-height:1.85;margin-bottom:1.4rem}
-.tech-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
-.tech-tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--navy-mid);background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.1);padding:.28rem .65rem;border-radius:2px;letter-spacing:.04em}
-.project-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--navy);font-size:.82rem;font-weight:500;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:all .2s;width:fit-content;letter-spacing:.04em}
-.project-link:hover{color:var(--accent);gap:.65rem}
-.project-video{background:var(--navy);position:relative;min-height:300px}
+#projects{
+  background:var(--off-white);
+}
+
+.projects-header{
+  max-width:680px;
+  margin-bottom:4rem;
+}
+
+.projects-header p{
+  color:var(--text-muted);
+  font-size:.98rem;
+  line-height:1.85;
+}
+
+.project-card{
+  background:var(--card-bg);
+  border:1px solid var(--border-subtle);
+  border-radius:4px;
+  margin-bottom:2.5rem;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(380px, 42%) minmax(0, 58%);
+  align-items:stretch;
+  transition:box-shadow .3s;
+}
+
+.project-card:hover{
+  box-shadow:0 8px 40px rgba(13,27,42,.08);
+}
+
+.project-card.reverse .project-info{
+  order:2;
+}
+
+.project-card.reverse .project-video{
+  order:1;
+}
+
+.project-info{
+  padding:3rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-width:0;
+}
+
+.project-number{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;
+  color:var(--accent);
+  letter-spacing:.12em;
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+
+.project-number::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:var(--accent);
+  opacity:.3;
+  max-width:36px;
+}
+
+.project-title{
+  font-family:'DM Serif Display',serif;
+  font-size:1.45rem;
+  color:var(--navy);
+  line-height:1.2;
+  margin-bottom:.9rem;
+}
+
+.project-desc{
+  font-size:.91rem;
+  color:var(--text-muted);
+  line-height:1.75;
+  margin-bottom:1.4rem;
+}
+
+.tech-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem;
+  margin-bottom:1.4rem;
+}
+
+.tech-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.66rem;
+  color:var(--navy-mid);
+  background:rgba(27,58,107,.05);
+  border:1px solid rgba(27,58,107,.1);
+  padding:.28rem .65rem;
+  border-radius:2px;
+  letter-spacing:.04em;
+}
+
+.project-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  color:var(--navy);
+  font-size:.82rem;
+  font-weight:500;
+  text-decoration:none;
+  border-bottom:1px solid var(--accent);
+  padding-bottom:2px;
+  transition:all .2s;
+  width:fit-content;
+  letter-spacing:.04em;
+}
+
+.project-link:hover{
+  color:var(--accent);
+  gap:.65rem;
+}
+
+.project-video{
+  background:var(--navy);
+  position:relative;
+  min-height:420px;
+}
+
+.project-video .video-placeholder{
+  height:100%;
+  min-height:420px;
+  aspect-ratio:auto;
+}
 
 /* ABOUT */
-#about{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+#about{
+  background:var(--white);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6rem;
+  align-items:center;
+}
+
 .about-img-wrap{position:relative}
-.about-photo{width:100%;max-width:440px;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:2px;display:block;filter:grayscale(8%) contrast(1.04)}
-.about-img-wrap::after{content:'"Build. Break. Understand."';position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--navy);color:var(--accent);font-family:'DM Serif Display',serif;font-style:italic;font-size:.88rem;padding:1rem 1.5rem;border-radius:2px;max-width:190px;line-height:1.45}
-.about-text{font-size:.97rem;color:var(--text-muted);line-height:1.9;margin-bottom:1.4rem}
-.about-text strong{color:var(--navy);font-weight:500}
-.interests{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin:1.8rem 0}
-.interest{display:flex;align-items:flex-start;gap:.7rem;font-size:.87rem;color:var(--text-muted)}
-.dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:.5rem}
-.badges{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.8rem}
-.badge{display:inline-flex;align-items:center;font-size:.79rem;color:var(--navy-mid);background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.1);padding:.45rem .95rem;border-radius:2px;font-weight:500}
+
+.about-photo{
+  width:100%;
+  max-width:440px;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:top center;
+  border-radius:2px;
+  display:block;
+  filter:grayscale(8%) contrast(1.04);
+}
+
+.about-img-wrap::after{
+  content:'"Build. Break. Understand."';
+  position:absolute;
+  bottom:-1.5rem;
+  right:-1.5rem;
+  background:var(--navy);
+  color:var(--accent);
+  font-family:'DM Serif Display',serif;
+  font-style:italic;
+  font-size:.88rem;
+  padding:1rem 1.5rem;
+  border-radius:2px;
+  max-width:190px;
+  line-height:1.45;
+}
+
+.about-text{
+  font-size:.97rem;
+  color:var(--text-muted);
+  line-height:1.9;
+  margin-bottom:1.4rem;
+}
+
+.about-text strong{
+  color:var(--navy);
+  font-weight:500;
+}
+
+.interests{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.85rem;
+  margin:1.8rem 0;
+}
+
+.interest{
+  display:flex;
+  align-items:flex-start;
+  gap:.7rem;
+  font-size:.87rem;
+  color:var(--text-muted);
+}
+
+.dot{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--accent);
+  flex-shrink:0;
+  margin-top:.5rem;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.65rem;
+  margin-top:1.8rem;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  font-size:.79rem;
+  color:var(--navy-mid);
+  background:rgba(27,58,107,.05);
+  border:1px solid rgba(27,58,107,.1);
+  padding:.45rem .95rem;
+  border-radius:2px;
+  font-weight:500;
+}
 
 /* CONTACT */
-#contact{background:var(--navy);text-align:center;padding:8rem 4rem;position:relative;overflow:hidden}
-#contact::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,169,110,.05) 0%,transparent 70%);pointer-events:none}
-#contact .section-label{justify-content:center}
-#contact .section-title{color:var(--white)}
-.contact-sub{color:rgba(248,246,242,.58);font-size:.98rem;max-width:500px;margin:1rem auto 3rem;line-height:1.85}
-.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
-.c-link{display:inline-flex;align-items:center;gap:.55rem;color:var(--white);font-size:.84rem;font-weight:500;text-decoration:none;border:1px solid rgba(248,246,242,.18);padding:.85rem 2rem;border-radius:2px;letter-spacing:.04em;transition:all .2s}
-.c-link:hover{border-color:var(--accent);color:var(--accent)}
-.c-link.primary{background:var(--accent);color:var(--navy);border-color:var(--accent);font-weight:600}
-.c-link.primary:hover{background:var(--accent-light);color:var(--navy)}
+#contact{
+  background:var(--navy);
+  text-align:center;
+  padding:8rem 4rem;
+  position:relative;
+  overflow:hidden;
+}
+
+#contact .section-label{
+  justify-content:center;
+}
+
+#contact .section-title{
+  color:var(--white);
+}
+
+.contact-sub{
+  color:rgba(248,246,242,.58);
+  font-size:.98rem;
+  max-width:500px;
+  margin:1rem auto 3rem;
+  line-height:1.85;
+}
+
+.contact-links{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.c-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  color:var(--white);
+  font-size:.84rem;
+  font-weight:500;
+  text-decoration:none;
+  border:1px solid rgba(248,246,242,.18);
+  padding:.85rem 2rem;
+  border-radius:2px;
+  letter-spacing:.04em;
+  transition:all .2s;
+}
+
+.c-link:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.c-link.primary{
+  background:var(--accent);
+  color:var(--navy);
+  border-color:var(--accent);
+  font-weight:600;
+}
 
 /* FOOTER */
-footer{background:#07111C;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(200,169,110,.1)}
-footer p{font-size:.77rem;color:rgba(248,246,242,.32);font-family:'JetBrains Mono',monospace;letter-spacing:.05em}
-footer a{color:rgba(200,169,110,.45);text-decoration:none;transition:color .2s}
-footer a:hover{color:var(--accent)}
+footer{
+  background:#07111C;
+  padding:2rem 4rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid rgba(200,169,110,.1);
+}
 
-/* ANIMATIONS */
-.fade-up{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
+footer p{
+  font-size:.77rem;
+  color:rgba(248,246,242,.32);
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.05em;
+}
+
+footer a{
+  color:rgba(200,169,110,.45);
+  text-decoration:none;
+}
+
+/* ANIMATION */
+.fade-up{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+
+.fade-up.visible{
+  opacity:1;
+  transform:translateY(0);
+}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  nav{padding:1.25rem 2rem}
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  #hero{grid-template-columns:1fr;padding:7rem 2rem 4rem;text-align:center}
-  .hero-image-col{order:-1}
-  .hero-photo-frame{width:240px;margin:0 auto}
-  .hero-social{display:none}
-  .hero-tagline{text-align:left;margin:0 auto 2.5rem}
-  .hero-buttons{justify-content:center}
-  #intro{grid-template-columns:1fr;gap:3rem}
-  .project-card{grid-template-columns:1fr}
-  .project-card.reverse{direction:ltr}
-  .project-video{min-height:220px}
-  #about{grid-template-columns:1fr;gap:3rem}
-  .about-img-wrap::after{display:none}
-  section{padding:4rem 2rem}
-  footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem}
+  nav{
+    padding:1.25rem 2rem;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+
+  #hero{
+    grid-template-columns:1fr;
+    padding:7rem 2rem 5rem;
+    text-align:center;
+  }
+
+  .hero-image-col{
+    order:-1;
+  }
+
+  .hero-photo-frame{
+    width:240px;
+    margin:0 auto;
+  }
+
+  .hero-social{
+    display:flex;
+  }
+
+  .hero-tagline{
+    text-align:left;
+    margin:0 auto 2.5rem;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+  }
+
+  #intro{
+    grid-template-columns:1fr;
+    gap:3rem;
+  }
+
+  .project-card{
+    grid-template-columns:1fr;
+  }
+
+  .project-card.reverse .project-info,
+  .project-card.reverse .project-video{
+    order:initial;
+  }
+
+  .project-info{
+    padding:2rem;
+  }
+
+  .project-video,
+  .project-video .video-placeholder{
+    min-height:240px;
+  }
+
+  #about{
+    grid-template-columns:1fr;
+    gap:3rem;
+  }
+
+  .about-img-wrap::after{
+    display:none;
+  }
+
+  section{
+    padding:4rem 2rem;
+  }
+
+  footer{
+    flex-direction:column;
+    gap:1rem;
+    text-align:center;
+    padding:2rem;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -180,15 +902,11 @@ footer a:hover{color:var(--accent)}
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-text fade-up">
     <div class="hero-tag">Cybersecurity Professional</div>
-    <h1 class="hero-name">
-      Kyma Uwa
-      <span>Chinyere Ihuoma Uwa</span>
-    </h1>
-    <p class="hero-title">MSc Applied Cybersecurity &nbsp;·&nbsp; Heriot-Watt University &nbsp;·&nbsp; Edinburgh, UK</p>
+    <h1 class="hero-name">Kyma Uwa <span>Chinyere Ihuoma Uwa</span></h1>
+    <p class="hero-title">MSc Applied Cybersecurity · Heriot-Watt University · Edinburgh, UK</p>
     <p class="hero-tagline">
       I build and break things in cybersecurity — then figure out why they broke.
       Security Operations · OT Security · Digital Forensics · Threat Intelligence.
@@ -198,22 +916,23 @@ footer a:hover{color:var(--accent)}
       <a href="https://linkedin.com/in/chinyere-ihuoma-uwa" target="_blank" rel="noopener" class="btn-outline">LinkedIn ↗</a>
     </div>
   </div>
+
   <div class="hero-image-col fade-up">
     <div class="hero-photo-frame">
       <img src="profile.jpeg" alt="Kyma Uwa" class="hero-photo">
-      <div class="hero-social">
-        <a href="https://github.com/ihuomah" target="_blank" rel="noopener" class="social-link" title="GitHub">GH</a>
-        <a href="https://linkedin.com/in/chinyere-ihuoma-uwa" target="_blank" rel="noopener" class="social-link" title="LinkedIn">LI</a>
-      </div>
+    </div>
+    <div class="hero-social">
+      <a href="https://github.com/ihuomah" target="_blank" rel="noopener" class="social-link" title="GitHub">GH</a>
+      <a href="https://linkedin.com/in/chinyere-ihuoma-uwa" target="_blank" rel="noopener" class="social-link" title="LinkedIn">LI</a>
     </div>
   </div>
+
   <div class="hero-scroll">
     <div class="scroll-line"></div>
     scroll
   </div>
 </section>
 
-<!-- INTRO VIDEO -->
 <section id="intro">
   <div class="intro-text fade-up">
     <div class="section-label">Introduction</div>
@@ -227,38 +946,16 @@ footer a:hover{color:var(--accent)}
       That combination gives me something rare at an early career stage: a real intuition
       for how systems fail, not just how they are designed to work.
     </p>
+
     <div class="intro-stats">
-      <div class="stat-item">
-        <div class="stat-number">5+</div>
-        <div class="stat-label">Years Army Service</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Security Projects</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">MSc</div>
-        <div class="stat-label">Applied Cybersecurity</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">Sep '26</div>
-        <div class="stat-label">Graduating</div>
-      </div>
+      <div class="stat-item"><div class="stat-number">5+</div><div class="stat-label">Years Army Service</div></div>
+      <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Security Projects</div></div>
+      <div class="stat-item"><div class="stat-number">MSc</div><div class="stat-label">Applied Cybersecurity</div></div>
+      <div class="stat-item"><div class="stat-number">Sep '26</div><div class="stat-label">Graduating</div></div>
     </div>
   </div>
-  <div class="video-wrap fade-up">
-    <!--
-    ══════════════════════════════════════════════════
-    INTRO VIDEO — Replace this block when ready:
 
-    <div class="video-embed">
-      <iframe src="YOUR_YOUTUBE_OR_VIMEO_EMBED_URL"
-        allow="accelerometer; autoplay; clipboard-write;
-        encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-    </div>
-    ══════════════════════════════════════════════════
-    -->
+  <div class="video-wrap fade-up">
     <div class="video-placeholder">
       <div class="play-btn"></div>
       <span class="video-label">Introduction Video — Coming Soon</span>
@@ -266,7 +963,6 @@ footer a:hover{color:var(--accent)}
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="projects-header fade-up">
     <div class="section-label">Work</div>
@@ -274,141 +970,80 @@ footer a:hover{color:var(--accent)}
     <p>Every project below is a real system I designed and built — not coursework, not tutorials. Each video walks through the problem, the thinking, and what it demonstrates.</p>
   </div>
 
-  <!-- CoC-VDS -->
   <div class="project-card fade-up">
     <div class="project-info">
       <div class="project-number">01</div>
       <h3 class="project-title">Chain-of-Custody Violation Detection System</h3>
-      <p class="project-desc">Most security systems ask whether an asset was accessed. This one asks whether the <em>right person</em> accessed it under the right conditions. A cyber-physical prototype using RFID role enforcement, HMAC-SHA256 cryptographic log chaining, and a stealth UI — designed so a violation leaves forensic evidence without alerting the attacker.</p>
+      <p class="project-desc">Most security systems ask whether an asset was accessed. This one asks whether the right person accessed it under the right conditions. A cyber-physical prototype using RFID role enforcement, HMAC-SHA256 cryptographic log chaining, and a stealth UI — designed so a violation leaves forensic evidence without alerting the attacker.</p>
       <div class="tech-tags">
-        <span class="tech-tag">Arduino Uno R4 WiFi</span>
-        <span class="tech-tag">C++</span>
-        <span class="tech-tag">RFID</span>
-        <span class="tech-tag">HMAC-SHA256</span>
-        <span class="tech-tag">Cyber-Physical Security</span>
+        <span class="tech-tag">Arduino Uno R4 WiFi</span><span class="tech-tag">C++</span><span class="tech-tag">RFID</span><span class="tech-tag">HMAC-SHA256</span><span class="tech-tag">Cyber-Physical Security</span>
       </div>
       <a href="https://github.com/ihuomah/chain-of-custody-violation-detector-uno-r4" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
-    <div class="project-video">
-      <!--
-      ══════════════════════════════════════════════════
-      CoC-VDS VIDEO — Replace when ready:
-      <div class="video-embed" style="height:100%">
-        <iframe src="YOUR_EMBED_URL" allowfullscreen></iframe>
-      </div>
-      ══════════════════════════════════════════════════
-      -->
-      <div class="video-placeholder" style="height:100%;min-height:300px">
-        <div class="play-btn"></div>
-        <span class="video-label">Project Walkthrough — Coming Soon</span>
-      </div>
-    </div>
+    <div class="project-video"><div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Project Walkthrough — Coming Soon</span></div></div>
   </div>
 
-  <!-- Silent Failure -->
   <div class="project-card reverse fade-up">
     <div class="project-info">
       <div class="project-number">02</div>
-      <h3 class="project-title">Silent Failure Detection &amp; System Analysis</h3>
+      <h3 class="project-title">Silent Failure Detection & System Analysis</h3>
       <p class="project-desc">In distributed systems, silence and normal operation look identical — until you build something that can tell the difference. A heartbeat-based UDP monitoring system that detects missing telemetry, classifies anomaly types, reconstructs outage timelines forensically, and simulates SOC triage workflows from alert to structured incident report.</p>
       <div class="tech-tags">
-        <span class="tech-tag">Arduino UNO R4 WiFi</span>
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">UDP</span>
-        <span class="tech-tag">Statistical Analysis</span>
-        <span class="tech-tag">SOC Workflows</span>
+        <span class="tech-tag">Arduino UNO R4 WiFi</span><span class="tech-tag">Python</span><span class="tech-tag">UDP</span><span class="tech-tag">Statistical Analysis</span><span class="tech-tag">SOC Workflows</span>
       </div>
       <a href="https://github.com/ihuomah/silent-failure-detection" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
-    <div class="project-video">
-      <!--
-      ══════════════════════════════════════════════════
-      SILENT FAILURE VIDEO — Replace when ready
-      ══════════════════════════════════════════════════
-      -->
-      <div class="video-placeholder" style="height:100%;min-height:300px">
-        <div class="play-btn"></div>
-        <span class="video-label">Project Walkthrough — Coming Soon</span>
-      </div>
-    </div>
+    <div class="project-video"><div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Project Walkthrough — Coming Soon</span></div></div>
   </div>
 
-  <!-- Vuln Lab -->
   <div class="project-card fade-up">
     <div class="project-info">
       <div class="project-number">03</div>
-      <h3 class="project-title">Vulnerability Management &amp; Security Testing Lab</h3>
+      <h3 class="project-title">Vulnerability Management & Security Testing Lab</h3>
       <p class="project-desc">End-to-end vulnerability assessment from exploitation to documented remediation — the way it works in a real security team. Conducted against OWASP Juice Shop using Nessus and DefectDojo, including manual XSS exploitation, CVSS v3 scoring, CWE mapping, and a workaround for tool limitations that forced a deeper understanding of how vulnerability data is actually structured.</p>
       <div class="tech-tags">
-        <span class="tech-tag">Nessus Essentials</span>
-        <span class="tech-tag">DefectDojo</span>
-        <span class="tech-tag">OWASP Juice Shop</span>
-        <span class="tech-tag">CVSS v3</span>
-        <span class="tech-tag">CWE Mapping</span>
+        <span class="tech-tag">Nessus Essentials</span><span class="tech-tag">DefectDojo</span><span class="tech-tag">OWASP Juice Shop</span><span class="tech-tag">CVSS v3</span><span class="tech-tag">CWE Mapping</span>
       </div>
       <a href="https://github.com/ihuomah/vulnerability-management-lab" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
-    <div class="project-video">
-      <!--
-      ══════════════════════════════════════════════════
-      VULN LAB VIDEO — Replace when ready
-      ══════════════════════════════════════════════════
-      -->
-      <div class="video-placeholder" style="height:100%;min-height:300px">
-        <div class="play-btn"></div>
-        <span class="video-label">Project Walkthrough — Coming Soon</span>
-      </div>
-    </div>
+    <div class="project-video"><div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Project Walkthrough — Coming Soon</span></div></div>
   </div>
 
-  <!-- OT Lab -->
   <div class="project-card reverse fade-up">
     <div class="project-info">
       <div class="project-number">04</div>
       <h3 class="project-title">OT-Aware Vulnerability Prioritisation Lab</h3>
       <p class="project-desc">In OT environments, the highest CVSS score is not always the highest priority — patching the wrong system can cause more harm than the vulnerability itself. A prioritisation framework combining CVSS, EPSS exploit probability, and operational context to produce ranked, actionable decisions. Feeds directly into MSc dissertation research on LLM reliability in automated vulnerability assessment.</p>
       <div class="tech-tags">
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">Jupyter</span>
-        <span class="tech-tag">CVSS v3</span>
-        <span class="tech-tag">EPSS</span>
-        <span class="tech-tag">ICS/OT Security</span>
+        <span class="tech-tag">Python</span><span class="tech-tag">Jupyter</span><span class="tech-tag">CVSS v3</span><span class="tech-tag">EPSS</span><span class="tech-tag">ICS/OT Security</span>
       </div>
       <a href="https://github.com/ihuomah/ot-aware-vuln-prioritisation-lab" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
-    <div class="project-video">
-      <!--
-      ══════════════════════════════════════════════════
-      OT LAB VIDEO — Replace when ready
-      ══════════════════════════════════════════════════
-      -->
-      <div class="video-placeholder" style="height:100%;min-height:300px">
-        <div class="play-btn"></div>
-        <span class="video-label">Project Walkthrough — Coming Soon</span>
-      </div>
-    </div>
+    <div class="project-video"><div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Project Walkthrough — Coming Soon</span></div></div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-img-wrap fade-up">
     <img src="standing.jpeg" alt="Kyma Uwa" class="about-photo">
   </div>
+
   <div class="fade-up">
     <div class="section-label">Background</div>
     <h2 class="section-title">About Kyma</h2>
     <p class="about-text">I came to cybersecurity from the ground up — building a foundation in <strong>network engineering and Linux systems administration</strong> through years of hands-on independent practice, then five years of service with the <strong>Nigerian Army</strong>, first as a Computer Science Instructor and Head of Department within the Army Education Corps, then as a Simulation Officer modelling how complex systems behave under operational stress.</p>
-    <p class="about-text">That progression brought me to <strong>Heriot-Watt University</strong>, where my MSc dissertation investigates whether large language models can generate reliable CVSS scores — comparing structured prompting (PDL) against conversational prompting, measured against official NVD scores and EPSS data.</p>
+    <p class="about-text">That progression brought me to <strong>Heriot-Watt University</strong>, where my MSc dissertation investigates whether large language models can generate reliable CVSS scores — comparing structured prompting approaches against conversational prompting, measured against official NVD scores and EPSS data.</p>
     <p class="about-text">I also run <strong>CreativeKyma</strong> — a cybersecurity education platform translating complex security concepts for non-technical audiences including organisations, small businesses, and children. Because security only works when people understand it.</p>
+
     <div class="interests">
-      <div class="interest"><div class="dot"></div><span>Security Operations &amp; SOC</span></div>
-      <div class="interest"><div class="dot"></div><span>Digital Forensics &amp; DFIR</span></div>
+      <div class="interest"><div class="dot"></div><span>Security Operations & SOC</span></div>
+      <div class="interest"><div class="dot"></div><span>Digital Forensics & DFIR</span></div>
       <div class="interest"><div class="dot"></div><span>IT / OT Security</span></div>
       <div class="interest"><div class="dot"></div><span>Threat Intelligence</span></div>
       <div class="interest"><div class="dot"></div><span>Vulnerability Management</span></div>
       <div class="interest"><div class="dot"></div><span>Cyber-Physical Systems</span></div>
     </div>
+
     <div class="badges">
       <span class="badge">British Computer Society</span>
       <span class="badge">Women in CyberSecurity (WiCyS)</span>
@@ -417,11 +1052,11 @@ footer a:hover{color:var(--accent)}
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-label">Get in touch</div>
   <h2 class="section-title fade-up">Let's talk.</h2>
   <p class="contact-sub fade-up">Currently seeking entry-level roles in Security Operations or Cybersecurity where I can apply structured analysis, incident investigation, and system-level thinking in real-world environments. Open to opportunities in the UK and internationally.</p>
+
   <div class="contact-links fade-up">
     <a href="mailto:uwachinyereihuoma@gmail.com" class="c-link primary">Send an email</a>
     <a href="https://linkedin.com/in/chinyere-ihuoma-uwa" target="_blank" rel="noopener" class="c-link">LinkedIn ↗</a>
@@ -430,14 +1065,17 @@ footer a:hover{color:var(--accent)}
 </section>
 
 <footer>
-  <p>© 2026 Kyma Uwa (Chinyere Ihuoma Uwa) &nbsp;·&nbsp; <a href="https://kymauwa.com">kymauwa.com</a></p>
+  <p>© 2026 Kyma Uwa (Chinyere Ihuoma Uwa) · <a href="https://kymauwa.com">kymauwa.com</a></p>
   <p><a href="https://github.com/ihuomah" target="_blank" rel="noopener">github.com/ihuomah</a></p>
 </footer>
 
 <script>
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  entries.forEach(e => { 
+    if(e.isIntersecting) e.target.classList.add('visible'); 
+  });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 window.addEventListener('scroll', () => {
@@ -454,6 +1092,7 @@ window.addEventListener('scroll', () => {
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
   const open = links.getAttribute('data-open');
+
   if(open) {
     links.removeAttribute('data-open');
     links.style.cssText = 'display:none';
@@ -462,10 +1101,14 @@ function toggleMenu() {
     links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(248,246,242,.97);backdrop-filter:blur(12px);align-items:center;justify-content:center;gap:2.5rem;z-index:99;';
     links.querySelectorAll('a').forEach(a => {
       a.style.fontSize = '1.2rem';
-      a.addEventListener('click', () => { links.style.cssText = 'display:none'; links.removeAttribute('data-open'); });
+      a.addEventListener('click', () => {
+        links.style.cssText = 'display:none';
+        links.removeAttribute('data-open');
+      });
     });
   }
 }
 </script>
+
 </body>
 </html>

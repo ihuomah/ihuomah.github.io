@@ -109,6 +109,10 @@ nav{
   background:var(--navy);
 }
 
+.mobile-close{
+  display:none;
+}
+
 /* HERO */
 #hero{
   min-height:100vh;
@@ -426,58 +430,21 @@ section{padding:6rem 4rem}
   border:1px solid rgba(200,169,110,.12);
 }
 
-.video-placeholder{
+.video-embed{
+  position:relative;
+  width:100%;
   aspect-ratio:16/9;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#0D1B2A 0%,#1B3A6B 100%);
-  gap:1rem;
-  cursor:pointer;
-  position:relative;
+  background:#000;
   overflow:hidden;
-  min-height:260px;
 }
 
-.video-placeholder::before{
-  content:'';
+.video-embed iframe{
   position:absolute;
-  inset:0;
-  background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,169,110,.025) 40px,rgba(200,169,110,.025) 41px);
-}
-
-.play-btn{
-  width:60px;
-  height:60px;
-  border:2px solid var(--accent);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  z-index:1;
-  transition:all .3s;
-}
-
-.play-btn::after{
-  content:'';
-  width:0;
-  height:0;
-  border-top:9px solid transparent;
-  border-bottom:9px solid transparent;
-  border-left:16px solid var(--accent);
-  margin-left:4px;
-}
-
-.video-label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.72rem;
-  color:rgba(200,169,110,.65);
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  position:relative;
-  z-index:1;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
 }
 
 /* PROJECTS */
@@ -605,9 +572,11 @@ section{padding:6rem 4rem}
   background:var(--navy);
   position:relative;
   min-height:420px;
+  display:flex;
+  align-items:stretch;
 }
 
-.project-video .video-placeholder{
+.project-video .video-embed{
   height:100%;
   min-height:420px;
   aspect-ratio:auto;
@@ -813,6 +782,64 @@ footer a{
     display:flex;
   }
 
+  .nav-links.mobile-open{
+    display:flex !important;
+    flex-direction:column;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:var(--white);
+    align-items:center;
+    justify-content:center;
+    gap:2.5rem;
+    z-index:200;
+    padding:5rem 2rem 2rem;
+  }
+
+  .nav-links.mobile-open a{
+    font-size:1.2rem;
+    color:var(--navy);
+  }
+
+  .mobile-close{
+    position:fixed;
+    top:1.5rem;
+    right:2rem;
+    width:36px;
+    height:36px;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    border:1px solid var(--navy);
+    border-radius:2px;
+    cursor:pointer;
+    z-index:201;
+    padding:0;
+  }
+
+  .mobile-close.visible{
+    display:flex;
+  }
+
+  .mobile-close::before,
+  .mobile-close::after{
+    content:'';
+    position:absolute;
+    width:18px;
+    height:1.5px;
+    background:var(--navy);
+  }
+
+  .mobile-close::before{transform:rotate(45deg);}
+  .mobile-close::after{transform:rotate(-45deg);}
+
+  body.menu-open{
+    overflow:hidden;
+  }
+
   #hero{
     grid-template-columns:1fr;
     padding:7rem 2rem 5rem;
@@ -860,7 +887,7 @@ footer a{
   }
 
   .project-video,
-  .project-video .video-placeholder{
+  .project-video .video-embed{
     min-height:240px;
   }
 
@@ -900,6 +927,7 @@ footer a{
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="Close menu"></button>
 </nav>
 
 <section id="hero">
@@ -956,9 +984,14 @@ footer a{
   </div>
 
   <div class="video-wrap fade-up">
-    <div class="video-placeholder">
-      <div class="play-btn"></div>
-      <span class="video-label">Introduction Video — Coming Soon</span>
+    <div class="video-embed">
+      <iframe
+        src="https://www.youtube.com/embed/srC7E1hRmXw?rel=0&modestbranding=1"
+        title="Kyma Uwa — Introduction"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
@@ -980,7 +1013,7 @@ footer a{
       </div>
       <a href="https://github.com/ihuomah/chain-of-custody-violation-detector-uno-r4" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
-    <div class="project-video"><div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Project Walkthrough — Coming Soon</span></div></div>
+    <div class="project-video"><div class="video-embed"><iframe src="https://www.youtube.com/embed/GyeK4l_VQ7s?rel=0&modestbranding=1" title="Chain-of-Custody Violation Detection — Walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
   </div>
 
   <div class="project-card reverse fade-up">
@@ -993,7 +1026,7 @@ footer a{
       </div>
       <a href="https://github.com/ihuomah/silent-failure-detection" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
-    <div class="project-video"><div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Project Walkthrough — Coming Soon</span></div></div>
+    <div class="project-video"><div class="video-embed"><iframe src="https://www.youtube.com/embed/u7g5JnACBvE?rel=0&modestbranding=1" title="Silent Failure Detection — Walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
   </div>
 
   <div class="project-card fade-up">
@@ -1006,7 +1039,7 @@ footer a{
       </div>
       <a href="https://github.com/ihuomah/vulnerability-management-lab" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
-    <div class="project-video"><div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Project Walkthrough — Coming Soon</span></div></div>
+    <div class="project-video"><div class="video-embed"><iframe src="https://www.youtube.com/embed/dBDyGr4FCVE?rel=0&modestbranding=1" title="Vulnerability Management Lab — Walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
   </div>
 
   <div class="project-card reverse fade-up">
@@ -1019,7 +1052,7 @@ footer a{
       </div>
       <a href="https://github.com/ihuomah/ot-aware-vuln-prioritisation-lab" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
     </div>
-    <div class="project-video"><div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Project Walkthrough — Coming Soon</span></div></div>
+    <div class="project-video"><div class="video-embed"><iframe src="https://www.youtube.com/embed/q1Wsi_ozoO4?rel=0&modestbranding=1" title="OT-Aware Vulnerability Prioritisation — Walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
   </div>
 </section>
 
@@ -1071,8 +1104,8 @@ footer a{
 
 <script>
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { 
-    if(e.isIntersecting) e.target.classList.add('visible'); 
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visible');
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
@@ -1091,23 +1124,28 @@ window.addEventListener('scroll', () => {
 
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
-  const open = links.getAttribute('data-open');
+  const closeBtn = document.querySelector('.mobile-close');
+  const body = document.body;
+  const isOpen = links.classList.contains('mobile-open');
 
-  if(open) {
-    links.removeAttribute('data-open');
-    links.style.cssText = 'display:none';
+  if (isOpen) {
+    links.classList.remove('mobile-open');
+    closeBtn.classList.remove('visible');
+    body.classList.remove('menu-open');
   } else {
-    links.setAttribute('data-open','1');
-    links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(248,246,242,.97);backdrop-filter:blur(12px);align-items:center;justify-content:center;gap:2.5rem;z-index:99;';
-    links.querySelectorAll('a').forEach(a => {
-      a.style.fontSize = '1.2rem';
-      a.addEventListener('click', () => {
-        links.style.cssText = 'display:none';
-        links.removeAttribute('data-open');
-      });
-    });
+    links.classList.add('mobile-open');
+    closeBtn.classList.add('visible');
+    body.classList.add('menu-open');
   }
 }
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.remove('mobile-open');
+    document.querySelector('.mobile-close').classList.remove('visible');
+    document.body.classList.remove('menu-open');
+  });
+});
 </script>
 
 </body>

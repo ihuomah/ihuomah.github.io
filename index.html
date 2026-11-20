@@ -380,10 +380,11 @@ section{padding:6rem 4rem}
 /* INTRO */
 #intro{
   background:var(--navy);
-  display:grid;
-  grid-template-columns:1fr 1.15fr;
-  gap:5rem;
-  align-items:center;
+}
+
+#intro .intro-text{
+  max-width:850px;
+  margin:0 auto;
 }
 
 #intro .section-title{color:var(--white)}
@@ -912,11 +913,6 @@ footer a{
     justify-content:center;
   }
 
-  #intro{
-    grid-template-columns:1fr;
-    gap:3rem;
-  }
-
   .project-card{
     grid-template-columns:1fr;
   }
@@ -1010,31 +1006,19 @@ footer a{
     <div class="section-label">Introduction</div>
     <h2 class="section-title">Meet Kyma</h2>
     <p class="intro-desc">
-      My background spans network engineering, five years of service within the international defense and military education sectors — as a Computer Science Instructor and Simulation Officer — and an MSc focused on digital forensics, SOC operations, and vulnerability analysis.
+      I am a cybersecurity professional with a background in network engineering, systems operations and control and automation. I hold an MSc in Applied Cybersecurity with Distinction from Heriot-Watt University.
     </p>
     <p class="intro-desc">
-      That combination gives me something rare at an early career stage: a real intuition
-      for how systems fail, not just how they are designed to work.
+      I enjoy understanding how systems work, how they fail and how they can be made more secure. My interests span security operations, operational technology and vulnerability management.
     </p>
 
     <div class="intro-stats">
       <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Security Projects</div></div>
       <div class="stat-item"><div class="stat-number">MSc</div><div class="stat-label">Applied Cybersecurity</div></div>
-      <div class="stat-item"><div class="stat-number">Sep '26</div><div class="stat-label">Graduating</div></div>
+      <div class="stat-item"><div class="stat-number">Distinction</div><div class="stat-label">MSc Result</div></div>
     </div>
   </div>
 
-  <div class="video-wrap fade-up">
-    <div class="video-embed">
-      <iframe
-        src="https://www.youtube.com/embed/srC7E1hRmXw?rel=0&modestbranding=1"
-        title="Kyma Uwa — Introduction"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-  </div>
 </section>
 
 <section id="projects">
@@ -1087,7 +1071,7 @@ footer a{
     <div class="project-info">
       <div class="project-number">04</div>
       <h3 class="project-title">OT-Aware Vulnerability Prioritisation Lab</h3>
-      <p class="project-desc">In OT environments, the highest CVSS score is not always the highest priority — patching the wrong system can cause more harm than the vulnerability itself. A prioritisation framework combining CVSS, EPSS exploit probability, and operational context to produce ranked, actionable decisions. Feeds directly into MSc dissertation research on LLM reliability in automated vulnerability assessment.</p>
+      <p class="project-desc">In OT environments, the highest CVSS score is not always the highest priority — patching the wrong system can cause more harm than the vulnerability itself. A prioritisation framework combining CVSS, EPSS exploit probability, and operational context to produce ranked, actionable decisions. Informed my MSc dissertation research on LLM reliability in automated vulnerability assessment.</p>
       <div class="tech-tags">
         <span class="tech-tag">Python</span><span class="tech-tag">Jupyter</span><span class="tech-tag">CVSS v3</span><span class="tech-tag">EPSS</span><span class="tech-tag">ICS/OT Security</span>
       </div>
@@ -1105,8 +1089,8 @@ footer a{
   <div class="fade-up">
     <div class="section-label">Background</div>
     <h2 class="section-title">About Kyma</h2>
-    <p class="about-text">I came to cybersecurity from the ground up — building a foundation in <strong>network engineering and Linux systems administration</strong> This led to years of specialized experience within the international defense and engineering sectors, <strong>focusing on technical education and simulating how complex systems and technical architectures behave under operational stress </strong>.</p>
-    <p class="about-text">That progression brought me to <strong>Heriot-Watt University</strong>, where my MSc dissertation focuses on <strong>AI in cybersecurity</strong>, specifically investigating large language models for vulnerability scoring — comparing structured prompting approaches against conversational prompting, and measured against official NVD scores and EPSS data.</p>
+    <p class="about-text">My journey into cybersecurity began with <strong>network engineering and Linux systems administration</strong>. I developed practical experience in systems operations, technical education and simulation, and later expanded into <strong>industrial control and automation</strong>.</p>
+    <p class="about-text">I completed my MSc in Applied Cybersecurity at <strong>Heriot-Watt University</strong> with Distinction. My dissertation explored <strong>AI in cybersecurity</strong>, evaluating the reliability of large language models for vulnerability scoring using CVSS and EPSS.</p>
     <p class="about-text">I also run <strong>CreativeKyma</strong> — a cybersecurity education platform translating complex security concepts for non-technical audiences including organisations, small businesses, and children. Because security only works when people understand it.</p>
 
     <div class="interests">
